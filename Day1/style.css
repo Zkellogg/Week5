@@ -1,0 +1,12 @@
+#topDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#topDiv li {
+    list-style: none;
+}
+#topDiv img {
+    height: 150px;
+    width: 150px;
+}
