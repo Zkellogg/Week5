@@ -72,7 +72,7 @@ const searchButton = document.getElementById("searchButton")
 
     searchButton.addEventListener("click",function(){
         const search = searchBox.value
-        // const searchArray = []
+        
         let orderRequest = new XMLHttpRequest()
         orderRequest.open('GET', 'https://troubled-peaceful-hell.glitch.me/orders/'+ search)
         orderRequest.send()
@@ -88,13 +88,7 @@ const searchButton = document.getElementById("searchButton")
 
                 orderUL.innerHTML = orderLI
 
-            // const orderList = result.map(function(order){
-                
-                
-            //     `
-            //     return orderLI
-            // })
-            // 
+            
     
             
         })
