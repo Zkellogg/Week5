@@ -1,4 +1,5 @@
 const topDiv = document.getElementById("topDiv")
+const bottomDiv = document.getElementById("bottomDiv")
 const movieInfoId = ""
 
 
@@ -12,8 +13,27 @@ function showMovieDetails(btn){
     detailRequest.addEventListener('load', function(){
 
         const details = JSON.parse(this.responseText)
-        console.log(details.Year);
-    })
+        detailsArr = []
+        detailsArr.push(details)
+        
+        const detailList = detailsArr.map(function(detail){
+            const detailsLI = `
+            <ul>
+            <li><img src='${detail.Poster}'/></li>
+            <li><p>Title: </p>${detail.Title}</li>
+            <li><p>Year Released: </p>${detail.Year}</li>
+            <li><p>Actors: </p>${detail.Actors}</li>
+            <li><p>BoxOffice: </p>${detail.BoxOffice}
+            </ul>
+            `
+            return detailsLI
+        })
+        bottomDiv.innerHTML = detailList
+        
+
+    
+     
+})
 }
 
 
