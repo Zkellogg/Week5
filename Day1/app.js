@@ -18,8 +18,8 @@ function showMovieDetails(btn){
         
         const detailList = detailsArr.map(function(detail){
             const detailsLI = `
-            <ul>
-            <li><img src='${detail.Poster}'/></li>
+            <ul id='detailsUL'>
+            <li><img id='moviePoster' src='${detail.Poster}'/></li>
             <li><p>Title: </p>${detail.Title}</li>
             <li><p>Year Released: </p>${detail.Year}</li>
             <li><p>Actors: </p>${detail.Actors}</li>
