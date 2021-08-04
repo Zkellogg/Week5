@@ -7,11 +7,12 @@ getLocationButton.addEventListener('click', function(){
     getLocation(function(position){
         console.log(position.coords);
         getWeatherGeo(position.coords.latitude, position.coords.longitude)
-        displayWeatherGeo(getLocation(position))
+        
     })
     
     
 })
+
 
 
 
@@ -49,6 +50,10 @@ function getWeatherGeo(latitude, longitude){
     })
     .then(result => {
         console.log(result);
+        return result
+    })
+    .then(result =>{
+        displayWeatherGeo(result)
     })
 }
 
@@ -80,11 +85,11 @@ function displayWeather(weather){
         const minTemp = temp.temp_min
         const pressure = temp.pressure
     const weatherLI =`
-        <li>${cityName}</li>
-        <li>${actTemp}</li>
-        <li>${maxTemp}</li>
-        <li>${minTemp}</li>
-        <li>${pressure}</li>
+        <li><lable>Location: </lable>${cityName}</li>
+        <li><lable>Current Temp: </lable>${actTemp}</li>
+        <li><lable>Today's Max Temp: </lable>${maxTemp}</li>
+        <li><lable>Today's Min Temp: </lable>${minTemp}</li>
+        <li><lable>Current Pressure: </lable>${pressure}</li>
         `
     weatherUL.innerHTML = weatherLI
 
@@ -92,22 +97,23 @@ function displayWeather(weather){
 
 }
 
-function displayWeatherGeo(position){
-    // const cityName = position.name
-    console.log(position.name);
-    // const temp = position.main.temp
-    // const actTemp = position.main.temp
-    // const maxTemp = position.main.temp_max
-    // const minTemp = position.main.temp_min
-    // const pressure = position.main.pressure
-// const weatherLI =`
-//     <li>${cityName}</li>
-//     <li>${actTemp}</li>
-//     <li>${maxTemp}</li>
-//     <li>${minTemp}</li>
-//     <li>${pressure}</li>
-//     `
-// weatherUL.innerHTML = weatherLI
+function displayWeatherGeo(result){
+    const cityName = result.name
+    console.log(cityName);
+    
+    const temp = result.main.temp
+    const actTemp = result.main.temp
+    const maxTemp = result.main.temp_max
+    const minTemp = result.main.temp_min
+    const pressure = result.main.pressure
+const weatherLI =`
+<li><lable>Location: </lable>${cityName}</li>
+<li><lable>Current Temp: </lable>${actTemp}</li>
+<li><lable>Today's Max Temp: </lable>${maxTemp}</li>
+<li><lable>Today's Min Temp: </lable>${minTemp}</li>
+<li><lable>Current Pressure: </lable>${pressure}</li>
+    `
+weatherUL.innerHTML = weatherLI
 
 
 
